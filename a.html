@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renaissance Study Hub: Key Points & Q&A</title>
+    <style>
+        :root {
+            --primary-color: #8b5a3c;
+            --secondary-color: #d4af37;
+            --accent-color: #c7956d;
+            --text-primary: #2c1810;
+            --text-secondary: #5d4037;
+            --bg-primary: #faf7f2;
+            --bg-secondary: #f5f1ea;
+            --bg-card: #ffffff;
+            --border-color: #e8ddd4;
+            --shadow: 0 4px 12px rgba(139, 90, 60, 0.1);
+            --shadow-hover: 0 8px 24px rgba(139, 90, 60, 0.15);
+            --gradient: linear-gradient(135deg, #8b5a3c 0%, #c7956d 100%);
+        }
+
+        [data-theme="dark"] {
+            --text-primary: #f5f1ea;
+            --text-secondary: #d4af37;
+            --bg-primary: #1a1611;
+            --bg-secondary: #2c1f16;
+            --bg-card: #3d2f22;
+            --border-color: #5d4037;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header and Hero */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 60px 0;
+        }
+
+        .section {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .card li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-size: 0.8rem;
+        }
+
+        /* Search and Filter */
+        .search-container {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            font-size: 1.1rem;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(139, 90, 60, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            background: var(--bg-card);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .faq-question.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .difficulty-badge {
+            background: var(--secondary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .difficulty-badge.level-a { background: #4caf50; }
+        .difficulty-badge.level-b { background: #ff9800; }
+        .difficulty-badge.level-c { background: #f44336; }
+        .difficulty-badge.level-d { background: #9c27b0; }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .expand-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .expand-icon.active {
+            transform: rotate(180deg);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            width: 45%;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            box-shadow: var(--shadow-hover);
+            transform: scale(1.02);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 25px);
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            border: 4px solid var(--bg-primary);
+            z-index: 2;
+        }
+
+        /* Glossary */
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .glossary-item {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary-color);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .glossary-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .glossary-term {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Quiz */
+        .quiz-container {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .quiz-question {
+            margin-bottom: 20px;
+        }
+
+        .quiz-options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .quiz-options li {
+            margin-bottom: 10px;
+        }
+
+        .quiz-options input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .quiz-options label {
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .quiz-options label:hover {
+            background: var(--bg-secondary);
+        }
+
+        .quiz-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .quiz-button:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .quiz-result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .quiz-result.correct {
+            background: #e8f5e8;
+            color: #2e7d32;
+            border: 1px solid #4caf50;
+        }
+
+        .quiz-result.incorrect {
+            background: #ffebee;
+            color: #c62828;
+            border: 1px solid #f44336;
+        }
+
+        /* Branding */
+        .kuse-branding {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--bg-card);
+            padding: 10px 15px;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .kuse-branding:hover {
+            color: var(--primary-color);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+            cursor: pointer;
+        }
+
+        .kuse-branding svg {
+            height: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-btn {
+                width: 200px;
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                margin-left: 40px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+
+            .glossary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kuse-branding {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin: 40px auto 20px;
+                justify-content: center;
+            }
+        }
+
+        /* Accessibility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles */
+        *:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+            <span id="theme-icon">🌙</span>
+        </button>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Renaissance Study Hub</h1>
+                <p class="tagline">From Medieval to Modern — Key concepts, searchable Q&A, timeline & terms, master exam points in one page</p>
+                <nav class="nav-buttons" role="navigation" aria-label="Main navigation">
+                    <a href="#takeaways" class="nav-btn">Key Points</a>
+                    <a href="#faq" class="nav-btn">Q&A Library</a>
+                    <a href="#timeline" class="nav-btn">Timeline</a>
+                    <a href="#glossary" class="nav-btn">Glossary</a>
+                    <a href="#quiz" class="nav-btn">Quick Quiz</a>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Key Takeaways Section -->
+            <section id="takeaways" class="section">
+                <h2 class="section-title">Key Takeaways</h2>
+                
+                <div class="card">
+                    <h3>Medieval vs Renaissance Comparison (Core Transformation)</h3>
+                    <ul>
+                        <li><strong>Life Focus:</strong> Medieval—Religious centered; Renaissance—Humanistic & worldly concerns</li>
+                        <li><strong>Art Themes:</strong> Medieval—Primarily religious; Renaissance—Religious + daily life (humans & nature)</li>
+                        <li><strong>Cultural Sources:</strong> Medieval—Religious culture; Renaissance—Greek & Roman classical revival</li>
+                        <li><strong>Knowledge Methods:</strong> Medieval—Lack of empiricism; Renaissance—Evidence-based, experimental & scientific methods</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Causes of the Renaissance</h3>
+                    <ul>
+                        <li><strong>Decline of Church Authority:</strong> Corruption like indulgences sparked reflection; Black Death challenged faith authority</li>
+                        <li><strong>Educational Expansion:</strong> More universities, richer libraries promoted questioning & knowledge spread</li>
+                        <li><strong>Crusades:</strong> East-West exchange brought back art & knowledge</li>
+                        <li><strong>Trade Growth:</strong> Wealthy merchants patronized arts & scholarship</li>
+                        <li><strong>Why Italy First:</strong> Center of classical culture; East-West trade hub; wealthy city-states & patronage (e.g., Medici family in Florence)</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li><strong>Humanism:</strong> Human-centered focus on emotions & rationality</li>
+                        <li><strong>Spirit of Inquiry:</strong> Challenging authority & old systems (Church doctrine examined)</li>
+                        <li><strong>Classical Revival:</strong> Architecture, sculpture, painting absorbed Greek & Roman elements; human proportions, perspective, light & shadow</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Key Figures & Fields</h3>
+                    <ul>
+                        <li><strong>Three Art Masters:</strong> Leonardo da Vinci (Last Supper, Mona Lisa, Vitruvian Man), Michelangelo (Sistine Chapel ceiling, David, Pietà), Raphael (Sistine Madonna, School of Athens)</li>
+                        <li><strong>Literature:</strong> Shakespeare (Romeo & Juliet, etc.), Dante (Divine Comedy), Cervantes (Don Quixote)</li>
+                        <li><strong>Science:</strong> Copernicus (heliocentric theory), Galileo (free fall, improved telescope), Vesalius (modern anatomy foundation), Harvey (blood circulation)</li>
+                        <li><strong>Architecture:</strong> Gothic style → Classical revival (domes, arches, columns, pediments)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section id="faq" class="section">
+                <h2 class="section-title">Q&A Library (Searchable/Expandable)</h2>
+                
+                <div class="search-container">
+                    <input type="text" class="search-input" id="faq-search" placeholder="Search questions or keywords..." aria-label="Search Q&A">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div id="faq-container">
+                    <div class="faq-item" data-difficulty="a">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Q1: What is the "Renaissance"? When and where did it emerge?<span class="difficulty-badge level-a">A</span></span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>A1:</strong> Refers to the 14th-16th century European revival and "rebirth" of ancient Greek and Roman culture, first emerging in Italian city-states (like Florence, Venice, Genoa), then spreading throughout Europe.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-difficulty="b">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Q2: Why did the Renaissance first occur in Italy?<span class="difficulty-badge level-b">B</span></span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>A2:</strong> Italy was the center of ancient Roman civilization and inherited Greek culture; Crusades and Mediterranean trade made it an East-West exchange hub; wealthy coastal city-states and merchant classes (like the Medici) patronized arts and scholarship.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-difficulty="b">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Q3: How did worldviews and knowledge-seeking methods differ between Medieval and Renaissance periods?<span class="difficulty-badge level-b">B</span></span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>A3:</strong> Medieval emphasized religious authority and obedience; Renaissance emphasized humanism and rationality, stressing evidence, experimentation and scientific methods, promoting questioning of traditional concepts.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-difficulty="a">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Q4: Name three Renaissance artists and their representative works.<span class="difficulty-badge level-a">A</span></span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>A4:</strong> Leonardo da Vinci (Last Supper, Mona Lisa), Michelangelo (Sistine Chapel ceiling, David, Pietà), Raphael (Sistine Madonna, School of Athens).</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-difficulty="c">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Q5: What were the causes of the Renaissance? Which two were most crucial?<span class="difficulty-badge level-c">C</span></span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>A5:</strong> Decline of Church influence, Black Death impact, educational expansion, universities & libraries, Crusades promoting exchange, trade prosperity & patronage. Most curricula emphasize "decline of authority" and "expansion of knowledge/exchange" as key factors.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-difficulty="b">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Q6: Compare Medieval and Renaissance artistic styles.<span class="difficulty-badge level-b">B</span></span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>A6:</strong> Medieval themes were predominantly religious, figures stiff, lacking perspective, dull colors; Renaissance balanced secular themes, emphasized proportions & anatomy, perspective & lighting, richer natural backgrounds.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-difficulty="c">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Q7: How did the Scientific Revolution mutually promote the Renaissance?<span class="difficulty-badge level-c">C</span></span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>A7:</strong> Humanistic and questioning spirit laid the foundation for scientific inquiry; Copernicus, Galileo and others used observation and experimentation to challenge traditional cosmology, which in turn weakened the Church's absolute authority, consolidating the status of reason and empiricism.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-difficulty="d">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Q8: What impact did "Humanism" have on education and political thought?<span class="difficulty-badge level-d">D</span></span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>A8:</strong> Emphasized rhetoric, history, ethics and other "humanities," cultivating civic virtue and rational discussion; urban republican and civic participation ideals rose, influencing modern political culture.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-difficulty="b">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Q9: Describe literary transformations in language and themes.<span class="difficulty-badge level-b">B</span></span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>A9:</strong> Shifted from Latin to various vernacular languages; themes expanded to love, social issues, satire, etc. (e.g., Cervantes satirized feudal chivalry).</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-difficulty="c">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Q10: Why did the Black Death indirectly promote the Renaissance?<span class="difficulty-badge level-c">C</span></span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p><strong>A10:</strong> Massive deaths and the Church's inability to stop the plague made people question ecclesiastical authority; labor force changes also promoted social and economic structural adjustments, providing space for new ideas and culture.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timeline Section -->
+            <section id="timeline" class="section">
+                <h2 class="section-title">Timeline</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Ancient Civilizations</h3>
+                            <p>Greek and Roman classical culture laid the foundation, emphasizing humanities, arts and philosophical thinking.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Medieval Period (5th-14th centuries)</h3>
+                            <p>Religion dominated society, classical culture declined, but universities and libraries gradually developed.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>14th Century: Renaissance Emergence</h3>
+                            <p>Italian city-states began reviving classical culture, humanistic thought emerged.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>15th-16th Centuries: European Spread</h3>
+                            <p>Renaissance thought and art spread to Northern Europe, Scientific Revolution developed simultaneously.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>1543: Scientific Revolution Marker</h3>
+                            <p>Copernicus published "On the Revolutions of Celestial Spheres," marking the official beginning of the Scientific Revolution.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Modern Period</h3>
+                            <p>Rationalism, scientific methods and humanistic spirit became the cornerstone of modern civilization.</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Glossary Section -->
+            <section id="glossary" class="section">
+                <h2 class="section-title">Glossary</h2>
+                
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <div class="glossary-term">Humanism</div>
+                        <p>A human-centered philosophical system emphasizing reason, dignity and human potential.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <div class="glossary-term">Indulgences</div>
+                        <p>"Sin remission" certificates sold by the Church to raise funds, causing moral controversy.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <div class="glossary-term">Perspective</div>
+                        <p>Painting technique creating spatial depth, making images more three-dimensional and realistic.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <div class="glossary-term">Chiaroscuro</div>
+                        <p>Artistic technique using light and shadow contrast to create dramatic effects and dimensionality.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <div class="glossary-term">Patronage</div>
+                        <p>Economic support system where wealthy merchants and nobles sponsored artists and scholars.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <div class="glossary-term">City-states</div>
+                        <p>Independent Italian city nations, such as Florence, Venice, etc.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Section -->
+            <section id="quiz" class="section">
+                <h2 class="section-title">Quick Quiz</h2>
+                
+                <div class="quiz-container">
+                    <div id="quiz-content">
+                        <div class="quiz-question">
+                            <h3 id="question-text">Loading...</h3>
+                            <ul class="quiz-options" id="quiz-options">
+                                <!-- Options will be populated by JavaScript -->
+                            </ul>
+                        </div>
+                        <button class="quiz-button" onclick="checkAnswer()">Submit Answer</button>
+                        <div class="quiz-result" id="quiz-result"></div>
+                        <button class="quiz-button" onclick="nextQuestion()" id="next-button" style="display:none;">Next Question</button>
+                    </div>
+                    <div id="quiz-score">
+                        <p>Progress: <span id="current-question">1</span> / <span id="total-questions">5</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reference Section -->
+            <section class="section">
+                <h2 class="section-title">Reference & Extension</h2>
+                
+                <div class="card">
+                    <h3>Study Notes Review Suggestions</h3>
+                    <ul>
+                        <li><strong>Master the Four Main Causes:</strong> Decline of Church authority, educational expansion, Crusades, trade patronage</li>
+                        <li><strong>Familiarize with Three Field Comparisons:</strong> Art, literature, science</li>
+                        <li><strong>Use Figures & Works for Memory Connection:</strong> Leonardo/Michelangelo/Raphael; Copernicus/Galileo/Vesalius/Harvey</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById(`theme-icon`);
+            
+            if (body.hasAttribute(`data-theme`)) {
+                body.removeAttribute(`data-theme`);
+                themeIcon.textContent = `🌙`;
+                localStorage.setItem(`theme`, `light`);
+            } else {
+                body.setAttribute(`data-theme`, `dark`);
+                themeIcon.textContent = `☀️`;
+                localStorage.setItem(`theme`, `dark`);
+            }
+        }
+
+        // Load saved theme
+        if (localStorage.getItem(`theme`) === `dark`) {
+            document.body.setAttribute(`data-theme`, `dark`);
+            document.getElementById(`theme-icon`).textContent = `☀️`;
+        }
+
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector(`.expand-icon`);
+            
+            // Close all other FAQs
+            document.querySelectorAll(`.faq-answer.active`).forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove(`active`);
+                    item.previousElementSibling.classList.remove(`active`);
+                    item.previousElementSibling.querySelector(`.expand-icon`).classList.remove(`active`);
+                }
+            });
+            
+            // Toggle current FAQ
+            answer.classList.toggle(`active`);
+            element.classList.toggle(`active`);
+            icon.classList.toggle(`active`);
+        }
+
+        // FAQ Search
+        document.getElementById(`faq-search`).addEventListener(`input`, function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll(`.faq-item`);
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector(`.faq-question`).textContent.toLowerCase();
+                const answer = item.querySelector(`.faq-answer`).textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = `block`;
+                } else {
+                    item.style.display = `none`;
+                }
+            });
+        });
+
+        // Quiz Data
+        const quizData = [
+            {
+                question: `In which region did the Renaissance first emerge?`,
+                options: [`France`, `Italy`, `England`, `Germany`],
+                correct: 1,
+                explanation: `The Renaissance first emerged in Italy because it was the center of ancient Roman civilization, had wealthy city-states, and merchants patronized artistic development.`
+            },
+            {
+                question: `Which of the following is NOT one of the three great Renaissance artists?`,
+                options: [`Leonardo da Vinci`, `Michelangelo`, `Raphael`, `Picasso`],
+                correct: 3,
+                explanation: `Picasso was a 20th-century modern artist, not from the Renaissance period. The three great Renaissance artists are Leonardo da Vinci, Michelangelo, and Raphael.`
+            },
+            {
+                question: `What is the core concept of Humanism?`,
+                options: [`God-centered`, `Human-centered`, `Nature-centered`, `State-centered`],
+                correct: 1,
+                explanation: `Humanism emphasizes being human-centered, focusing on human reason, dignity and potential, which is an important characteristic of the Renaissance.`
+            },
+            {
+                question: `What important theory did Copernicus propose?`,
+                options: [`Geocentric theory`, `Heliocentric theory`, `Evolution theory`, `Relativity theory`],
+                correct: 1,
+                explanation: `Copernicus proposed the heliocentric theory, believing the sun is the center of the universe and Earth orbits the sun, challenging the traditional geocentric theory.`
+            },
+            {
+                question: `How did the Black Death indirectly promote the Renaissance?`,
+                options: [`Increased population`, `Promoted trade`, `Questioned Church authority`, `Developed agriculture`],
+                correct: 2,
+                explanation: `The Black Death caused massive deaths and the Church's inability to stop the plague made people question Church authority, providing space for new ideas.`
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedAnswer = null;
+
+        function loadQuestion() {
+            const question = quizData[currentQuestionIndex];
+            document.getElementById(`question-text`).textContent = question.question;
+            document.getElementById(`current-question`).textContent = currentQuestionIndex + 1;
+            document.getElementById(`total-questions`).textContent = quizData.length;
+            
+            const optionsContainer = document.getElementById(`quiz-options`);
+            optionsContainer.innerHTML = ``;
+            
+            question.options.forEach((option, index) => {
+                const li = document.createElement(`li`);
+                li.innerHTML = `
+                    <label>
+                        <input type="radio" name="quiz-option" value="${index}">
+                        ${option}
+                    </label>
+                `;
+                optionsContainer.appendChild(li);
+            });
+            
+            // Reset UI
+            document.getElementById(`quiz-result`).style.display = `none`;
+            document.getElementById(`next-button`).style.display = `none`;
+            selectedAnswer = null;
+        }
+
+        function checkAnswer() {
+            const selectedOption = document.querySelector(`input[name="quiz-option"]:checked`);
+            if (!selectedOption) {
+                alert(`Please select an answer!`);
+                return;
+            }
+            
+            selectedAnswer = parseInt(selectedOption.value);
+            const question = quizData[currentQuestionIndex];
+            const resultDiv = document.getElementById(`quiz-result`);
+            
+            if (selectedAnswer === question.correct) {
+                score++;
+                resultDiv.className = `quiz-result correct`;
+                resultDiv.innerHTML = `<strong>Correct!</strong> ${question.explanation}`;
+            } else {
+                resultDiv.className = `quiz-result incorrect`;
+                resultDiv.innerHTML = `<strong>Incorrect.</strong> The correct answer is: ${question.options[question.correct]}.<br>${question.explanation}`;
+            }
+            
+            resultDiv.style.display = `block`;
+            document.getElementById(`next-button`).style.display = `inline-block`;
+            
+            // Disable all options
+            document.querySelectorAll(`input[name="quiz-option"]`).forEach(input => {
+                input.disabled = true;
+            });
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            
+            if (currentQuestionIndex >= quizData.length) {
+                // Quiz finished
+                const percentage = Math.round((score / quizData.length) * 100);
+                document.getElementById(`quiz-content`).innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <h3>Quiz Complete!</h3>
+                        <p style="font-size: 1.5rem; margin: 20px 0;">
+                            Your Score: ${score} / ${quizData.length} (${percentage}%)
+                        </p>
+                        <p>${percentage >= 80 ? `Excellent! You have a deep understanding of the Renaissance.` : percentage >= 60 ? `Good! Recommend reviewing key content again.` : `Needs improvement! Suggest re-reading the key takeaways.`}</p>
+                        <button class="quiz-button" onclick="restartQuiz()">Start Over</button>
+                    </div>
+                `;
+                document.getElementById(`quiz-score`).style.display = `none`;
+            } else {
+                loadQuestion();
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            selectedAnswer = null;
+            
+            document.getElementById(`quiz-content`).innerHTML = `
+                <div class="quiz-question">
+                    <h3 id="question-text">Loading...</h3>
+                    <ul class="quiz-options" id="quiz-options">
+                        <!-- Options will be populated by JavaScript -->
+                    </ul>
+                </div>
+                <button class="quiz-button" onclick="checkAnswer()">Submit Answer</button>
+                <div class="quiz-result" id="quiz-result"></div>
+                <button class="quiz-button" onclick="nextQuestion()" id="next-button" style="display:none;">Next Question</button>
+            `;
+            document.getElementById(`quiz-score`).style.display = `block`;
+            
+            loadQuestion();
+        }
+
+        // Initialize quiz
+        loadQuestion();
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll(`a[href^="#"]`).forEach(anchor => {
+            anchor.addEventListener(`click`, function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute(`href`));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: `smooth`,
+                        block: `start`
+                    });
+                }
+            });
+        });
+
+        // Add keyboard navigation for FAQ
+        document.addEventListener(`keydown`, function(e) {
+            if (e.key === `Enter` || e.key === ` `) {
+                const focusedElement = document.activeElement;
+                if (focusedElement.classList.contains(`faq-question`)) {
+                    e.preventDefault();
+                    toggleFAQ(focusedElement);
+                }
+            }
+        });
+
+        // Make FAQ questions focusable
+        document.querySelectorAll(`.faq-question`).forEach(question => {
+            question.setAttribute(`tabindex`, `0`);
+            question.setAttribute(`role`, `button`);
+            question.setAttribute(`aria-expanded`, `false`);
+            
+            question.addEventListener(`click`, function() {
+                const isExpanded = this.classList.contains(`active`);
+                this.setAttribute(`aria-expanded`, isExpanded.toString());
+            });
+        });
+    </script>
+
+    <!-- Kuse Inner Script -->
+    <script src="https://cdn.kuse.ai/sdk.prd.js"></script>
+</body>
+</html>
